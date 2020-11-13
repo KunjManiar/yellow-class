@@ -8,6 +8,8 @@ import ReactDom from 'react-dom'
 // import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 import './App.css'
 import './styles/test.css'
 // import './styles/index.css'
@@ -54,6 +56,9 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
   const [currentImageNo, setCurrentImageNo] = useState(-1)
+  const [onToggleClass, setOnToggleClass] = useState(null)
+
+  // const [show, setShow] = useState([false])
 
   useEffect(() => {
     fetchImages();
@@ -84,13 +89,16 @@ function App() {
     // setDescription(description)
     setCurrentImage(image)
     setCurrentImageNo(i)
+    setOnToggleClass('aToggleClass')
+    // setTransitionClass("opaque")
     // console.log(images[i])
   }
 
   const leftButtonFunction = (e) => {
 
     if (e && e.currentTarget.hasError) return
-    if(currentImageNo>0){
+    if (currentImageNo > 0) {
+      setOnToggleClass('slide');
       setCurrentImage(images[currentImageNo - 1]);
       setCurrentImageNo(currentImageNo - 1);
       if (!e) e = window.event;
@@ -102,20 +110,23 @@ function App() {
   const rightButtonFunction = (e) => {
 
     if (e && e.currentTarget.hasError) return
-    if(currentImageNo<images.length-2 ){
+    if (currentImageNo < images.length - 2) {
+      // setTransitionClass(null)
+      setOnToggleClass('slide');
       setCurrentImage(images[currentImageNo + 1]);
       setCurrentImageNo(currentImageNo + 1);
       if (!e) e = window.event;
       e.cancelBubble = true;
       if (e.stopPropagation) e.stopPropagation();
     }
+    // setTransitionClass("opaque")
   }
 
   const childElements = images.map(function (element, i) {
     return (
       <div key={i}>
         <img
-          style={{borderRadius: 16}}
+          style={{ borderRadius: 16 }}
           src={element.urls.regular}
           width={230}
           onClick={(e) => toggleModal(e, element, i)}
@@ -159,31 +170,43 @@ function App() {
             toggleModal(e, null)
           }}
         >
+
           <div className="fixed p1" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', }}>
-          <div onClick={(e) => { leftButtonFunction(e) }}>
+
+            <div onClick={(e) => { leftButtonFunction(e) }}>
               <span style={{ fontSize: 40 }}>
-                <i class="fas fa-chevron-left" style={{ color: '#E60023' }}></i>
+                <i className="fas fa-chevron-left" style={{ color: '#E60023' }}></i>
               </span>
             </div>
-            <img
-              src={currentImage.urls.full}
-              style={{ width: '35%', padding: 20 }}
-              className="fit pointer"
-              alt={"Not found"}
-            />
-            {/* <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            {/* <div className="fixed p1"> */}
+              <TransitionGroup component={null}>
+                <CSSTransition
+                  className={`${onToggleClass} fit pointer`}
+                  timeout={{ enter: 4000, exit: 0 }}
+                  key={currentImage.urls.regular}
+                >
+                  <img
+                    src={currentImage.urls.full}
+                    style={{ width: '35%', padding: 20 }}
+                    // className={` ${transitionClass}`}
+                    alt={"Not found"}
+                  />
+                  </CSSTransition>
+                </TransitionGroup>
+            {/* </div> */}
+                {/* <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
               <h4>{currentImage.user.name}</h4>
               <p>{currentImage.description}</p>
             </div> */}
-            <div onClick={(e) => { rightButtonFunction(e) }}>
-              <span style={{ fontSize: 40 }}>
-                <i class="fas fa-chevron-right" style={{ color: '#E60023' }}></i>
-              </span>
-            </div>
+                <div onClick={(e) => { rightButtonFunction(e) }}>
+                  <span style={{ fontSize: 40 }}>
+                    <i class="fas fa-chevron-right" style={{ color: '#E60023' }}></i>
+                  </span>
+                </div>
           </div>
-          {/* <span>{title}</span> */}
-          {/* <span>{description}</span> */}
-        </div>,
+              {/* <span>{title}</span> */}
+              {/* <span>{description}</span> */}
+            </div>,
         document.getElementById('root2')
       )}
     </div>
