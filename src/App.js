@@ -4,11 +4,14 @@ import { UnsplashImage } from './components/UnsplashImage';
 import { Loader } from './components/Loader';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import ReactDom from 'react-dom'
 
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 
 import './App.css'
+import './styles/test.css'
+// import './styles/index.css'
 
 import Masonry from 'react-masonry-css';
 
@@ -36,6 +39,9 @@ const WrapperImages = styled.section`
 
 function App() {
   const [images, setImage] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+  const [currentImageNo, setCurrentImageNo] = useState(-1)
 
   useEffect(() => {
     fetchImages();
@@ -52,22 +58,58 @@ function App() {
       })
   }
 
-  const childElements = images.map(function (element) {
+
+
+  const toggleModal = (e, image, i) => {
+
+    // console.log("In toggle")
+    if (e && e.currentTarget.hasError) return
+    // if (!e) var e = window.event;
+    // e.cancelBubble = true;
+    // if (e.stopPropagation) e.stopPropagation();
+    setShowModal(!showModal)
+    // setUrl(url)
+    // setDescription(description)
+    setCurrentImage(image)
+    setCurrentImageNo(i)
+    // console.log(images[i])
+  }
+
+  const leftButtonFunction = (e) => {
+
+    if (e && e.currentTarget.hasError) return
+    if(currentImageNo>0){
+      setCurrentImage(images[currentImageNo - 1]);
+      setCurrentImageNo(currentImageNo - 1);
+      if (!e) var e = window.event;
+      e.cancelBubble = true;
+      if (e.stopPropagation) e.stopPropagation();
+    }
+  }
+
+  const rightButtonFunction = (e) => {
+
+    if (e && e.currentTarget.hasError) return
+    if(currentImageNo<images.length-2 ){
+      setCurrentImage(images[currentImageNo + 1]);
+      setCurrentImageNo(currentImageNo + 1);
+      if (!e) var e = window.event;
+      e.cancelBubble = true;
+      if (e.stopPropagation) e.stopPropagation();
+    }
+  }
+
+  const childElements = images.map(function (element, i) {
     return (
-      <div>
-        <img src={element.urls.regular}  width={250}/>
-        </div>
+      <div key={i}>
+        <img
+          src={element.urls.regular}
+          width={250}
+          onClick={(e) => toggleModal(e, element, i)}
+        />
+      </div>
     );
   });
-  const masonryOptions = {
-    transitionDuration: 0
-  };
-  const style = {
-    backgroundColor: 'tomato'
-  };
-
-  const imagesLoadedOptions = { background: '.my-bg-image-el' }
-
 
   return (
     <div>
@@ -89,12 +131,47 @@ function App() {
           breakpointCols={5}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
-          // style={style}
+        // style={style}
         >
           {childElements}
         </Masonry>
 
       </InfiniteScroll>
+      {showModal && ReactDom.createPortal(
+        <div
+          className="fixed p1 flex flex-column justify-center items-center trbl0 bg-fff-o overflow-auto overscroll-contain"
+          onClick={e => {
+            console.log(e.currentTarget)
+            toggleModal(e, null)
+          }}
+        >
+          <div className="fixed p1" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', }}>
+          <div onClick={(e) => { leftButtonFunction(e) }}>
+              <span style={{ fontSize: 40 }}>
+                <i class="fas fa-chevron-left" style={{ color: '#E60023' }}></i>
+              </span>
+            </div>
+            <img
+              src={currentImage.urls.full}
+              style={{ width: '35%', padding: 20 }}
+              className="fit pointer"
+
+            />
+            {/* <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+              <h4>{currentImage.user.name}</h4>
+              <p>{currentImage.description}</p>
+            </div> */}
+            <div onClick={(e) => { rightButtonFunction(e) }}>
+              <span style={{ fontSize: 40 }}>
+                <i class="fas fa-chevron-right" style={{ color: '#E60023' }}></i>
+              </span>
+            </div>
+          </div>
+          {/* <span>{title}</span> */}
+          {/* <span>{description}</span> */}
+        </div>,
+        document.getElementById('root2')
+      )}
     </div>
   );
 }

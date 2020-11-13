@@ -54,3 +54,9 @@
   /* background: grey; */
   margin-bottom: 30px;
 }
+
+.halfsize {
+  -moz-transform:scale(0.5);
+  -webkit-transform:scale(0.5);
+  transform:scale(0.5);
+}

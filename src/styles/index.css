@@ -1,0 +1,62 @@
+/* @import '../../node_modules/normalize.css/normalize.css'; */
+/* @import '../../node_modules/basscss/css/basscss.min.css'; */
+/* @import './fontello/css/fontello-embedded.css'; */
+/* @import './fontello/config.json '; */
+/* @import './variables.css';
+@import './shake.css'; */
+
+* {
+  color: #333;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  padding-bottom: 3rem;
+}
+
+/* color */
+.white { color: white }
+.silver { color: #aaa }
+.red { color: #FF4136 }
+
+/* background  color */
+.bg-color1 { background-color: var(--color1) }
+
+
+/* border */
+.border-color1d { border-color: var(--color1-d) }
+.border-silver { border-color: silver }
+.border-white { border-color: white }
+
+/* misc */
+.outline-none { outline: none }
+.pointer { cursor: pointer }
+.rounded1 { border-radius: 0.5rem }
+.overscroll-contain { overscroll-behavior: contain }
+
+/* component */
+.button {
+  background-color: transparent;
+  transition: all 0.3s ease;
+  &:disabled { cursor: not-allowed; opacity: 0.33; }
+  &:not(:disabled) {
+    &:hover { opacity: 0.75 }
+  }
+  &:active {
+    opacity: 0.5;
+    background-color: #fffa;
+  }
+}
+
+.trbl0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.bg-fff-o {
+  background-color: #fffc
+}
