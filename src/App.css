@@ -28,6 +28,10 @@
   color: #61dafb;
 }
 
+.infinite-scroll-component {
+  padding: 0px 30px 0px 30px
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -41,11 +45,11 @@
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -30px; /* gutter size offset */
+  margin-left: -15px; /* gutter size offset */
   width: auto;
 }
 .my-masonry-grid_column {
-  padding-left: 30px; /* gutter size */
+  padding-left: 25px; /* gutter size */
   background-clip: padding-box;
 }
 

@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import './Header.css'
 
 const Header = styled.header`
-  max-width: 70rem;
-  margin: 2rem auto;
+  // max-width: 70rem;
+  // margin: 2rem auto;
   text-align: center;
+  margin: 10px
 `;
 
 const H1 = styled.h1`
   font-family: 'Oswald', sans-serif;
-  margin-bottom: 1em;
+  // margin-bottom: 1em;
 `;
 
 // const Input = styled.input`
@@ -39,10 +41,32 @@ const H1 = styled.h1`
 export const Heading = () => {
 
   return (
-    <Header>
-      <H1>Unsplash</H1>
-      <p>The internet’s source of freely usable images.</p>
-      <p>Powered by creators everywhere.</p>
+    <Header className>
+      {/* <div class="top-container">
+        <H1>Pinterest Clone by Kunj Maniar</H1>
+        <p>Images from Usplash The internet’s source of freely usable images.</p>
+      </div> */}
+      <div className="header flexRow" id="myHeader flexRow" style={{ justifyContent: 'space-between' }}>
+        <div className="flexRow" >
+          <span style={{ fontSize: 40 }}>
+            <i class="fab fa-pinterest" style={{ color: '#E60023' }}></i>
+          </span>
+          <p style={{ color: '#E60023', marginLeft: 5, fontFamily: 'Oswald', letterSpacing: 0.8, fontSize: 25 }}>Pinterest</p>
+          <div style={{paddingTop: 10, paddingLeft: 9 }}>
+          <p style={{ color: '#E60023', fontFamily: 'Oswald', letterSpacing: 0.4 }}> clone by Kunj Maniar</p>
+          </div>
+        </div>
+        <div className="flexRow" >
+          <div className="buttonHeader" style={{}}>
+            <p className="buttonText" style={{color: '#ffffff'}}>Login</p>
+          </div>
+          <div className="buttonHeader" style={{backgroundColor: '#efefef'}}>
+            <p className="buttonText" style={{}}>Sign Up</p>
+          </div>
+        </div>
+      </div>
+
+      {/* <p>Powered by Kunj Maniar.</p> */}
       {/* <form>
         <Input type="text" placeholder="Search photos" />
         <Button>Search</Button>

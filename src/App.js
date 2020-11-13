@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Heading } from './components/Heading';
-import { UnsplashImage } from './components/UnsplashImage';
 import { Loader } from './components/Loader';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -25,6 +24,19 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: sans-serif;
+  }
+  .content {
+    padding: 16px;
+  }
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+  .sticky + .content {
+    padding-top: 102px;
   }
 `;
 
@@ -103,8 +115,9 @@ function App() {
     return (
       <div key={i}>
         <img
+          style={{borderRadius: 16}}
           src={element.urls.regular}
-          width={250}
+          width={230}
           onClick={(e) => toggleModal(e, element, i)}
         />
       </div>
