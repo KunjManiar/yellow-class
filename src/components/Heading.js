@@ -9,10 +9,10 @@ const Header = styled.header`
   margin: 10px
 `;
 
-const H1 = styled.h1`
-  font-family: 'Oswald', sans-serif;
-  // margin-bottom: 1em;
-`;
+// const H1 = styled.h1`
+//   font-family: 'Oswald', sans-serif;
+//   // margin-bottom: 1em;
+// `;
 
 // const Input = styled.input`
 //   height: 2.5rem;
@@ -46,10 +46,10 @@ export const Heading = () => {
         <H1>Pinterest Clone by Kunj Maniar</H1>
         <p>Images from Usplash The internet’s source of freely usable images.</p>
       </div> */}
-      <div className="header flexRow" id="myHeader flexRow" style={{ justifyContent: 'space-between' }}>
+      <div className="header flexRow" id="myHeader" style={{ justifyContent: 'space-between' }}>
         <div className="flexRow" >
           <span style={{ fontSize: 40 }}>
-            <i class="fab fa-pinterest" style={{ color: '#E60023' }}></i>
+            <i className="fab fa-pinterest" style={{ color: '#E60023' }}></i>
           </span>
           <p style={{ color: '#E60023', marginLeft: 5, fontFamily: 'Oswald', letterSpacing: 0.8, fontSize: 25 }}>Pinterest</p>
           <div style={{paddingTop: 10, paddingLeft: 9 }}>

@@ -5,7 +5,7 @@ import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ReactDom from 'react-dom'
 
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components';
 
 import './App.css'
@@ -40,14 +40,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const WrapperImages = styled.section`
-  max-width: 70rem;
-  margin: 4rem auto;
-  display: grid;
-  grid-gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 300px;
-`;
+// const WrapperImages = styled.section`
+//   max-width: 70rem;
+//   margin: 4rem auto;
+//   display: grid;
+//   grid-gap: 1em;
+//   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//   grid-auto-rows: 300px;
+// `;
 
 function App() {
   const [images, setImage] = useState([]);
@@ -93,7 +93,7 @@ function App() {
     if(currentImageNo>0){
       setCurrentImage(images[currentImageNo - 1]);
       setCurrentImageNo(currentImageNo - 1);
-      if (!e) var e = window.event;
+      if (!e) e = window.event;
       e.cancelBubble = true;
       if (e.stopPropagation) e.stopPropagation();
     }
@@ -105,7 +105,7 @@ function App() {
     if(currentImageNo<images.length-2 ){
       setCurrentImage(images[currentImageNo + 1]);
       setCurrentImageNo(currentImageNo + 1);
-      if (!e) var e = window.event;
+      if (!e) e = window.event;
       e.cancelBubble = true;
       if (e.stopPropagation) e.stopPropagation();
     }
@@ -119,6 +119,7 @@ function App() {
           src={element.urls.regular}
           width={230}
           onClick={(e) => toggleModal(e, element, i)}
+          alt={"Not found"}
         />
       </div>
     );
@@ -168,7 +169,7 @@ function App() {
               src={currentImage.urls.full}
               style={{ width: '35%', padding: 20 }}
               className="fit pointer"
-
+              alt={"Not found"}
             />
             {/* <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
               <h4>{currentImage.user.name}</h4>
