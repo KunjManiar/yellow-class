@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import './Header.css'
 
@@ -40,6 +40,19 @@ const Header = styled.header`
 
 export const Heading = () => {
 
+
+  const showSignIn = window.innerWidth > 450 ?
+    (
+      <div className="flexRow" >
+        <div className="buttonHeader" style={{}}>
+          <p className="buttonText" style={{ color: '#ffffff' }}>Login</p>
+        </div>
+        <div className="buttonHeader" style={{ backgroundColor: '#efefef' }}>
+          <p className="buttonText" style={{}}>Sign Up</p>
+        </div>
+      </div>
+    ) : null
+    
   return (
     <Header className>
       {/* <div class="top-container">
@@ -52,18 +65,11 @@ export const Heading = () => {
             <i className="fab fa-pinterest" style={{ color: '#E60023' }}></i>
           </span>
           <p style={{ color: '#E60023', marginLeft: 5, fontFamily: 'Oswald', letterSpacing: 0.8, fontSize: 25 }}>Pinterest</p>
-          <div style={{paddingTop: 10, paddingLeft: 9 }}>
-          <p style={{ color: '#E60023', fontFamily: 'Oswald', letterSpacing: 0.4 }}> clone by Kunj Maniar</p>
+          <div style={{ paddingTop: 10, paddingLeft: 9 }}>
+            <p style={{ color: '#E60023', fontFamily: 'Oswald', letterSpacing: 0.4 }}> clone by Kunj Maniar</p>
           </div>
         </div>
-        <div className="flexRow" >
-          <div className="buttonHeader" style={{}}>
-            <p className="buttonText" style={{color: '#ffffff'}}>Login</p>
-          </div>
-          <div className="buttonHeader" style={{backgroundColor: '#efefef'}}>
-            <p className="buttonText" style={{}}>Sign Up</p>
-          </div>
-        </div>
+        {showSignIn}
       </div>
 
       {/* <p>Powered by Kunj Maniar.</p> */}

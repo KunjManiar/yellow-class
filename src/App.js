@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Heading } from './components/Heading';
 import { Loader } from './components/Loader';
 import axios from 'axios';
@@ -58,8 +58,25 @@ function App() {
   const [currentImageNo, setCurrentImageNo] = useState(-1)
   const [onToggleClass, setOnToggleClass] = useState(null)
 
-  // const [show, setShow] = useState([false])
+  console.log(window.innerHeight + " " + window.innerWidth)
+  
+  const [screenSettings, setScreenSettings] = useState({})
 
+  useEffect(() => {
+    const pad = window.innerWidth > 1000 ? 25 : 12.5
+    const imgW = window.innerWidth > 1000 ? 230 : 130
+    const maxCol = parseInt(window.innerWidth/imgW)
+    console.log(maxCol)
+
+    setScreenSettings({
+      imageWidth : imgW,
+      padding : pad,
+      columns : parseInt((window.innerWidth-20  - ((maxCol+1)*pad))/imgW),
+      paddingClass : pad === 25 ? 'my-masonry-grid_column_large' : 'my-masonry-grid_column_small'
+    })
+  }, [window])
+  // const [show, setShow] = useState([false])
+  console.log(screenSettings)
   useEffect(() => {
     fetchImages();
   }, [])
@@ -128,7 +145,7 @@ function App() {
         <img
           style={{ borderRadius: 16 }}
           src={element.urls.regular}
-          width={230}
+          width={screenSettings.imageWidth}
           onClick={(e) => toggleModal(e, element, i)}
           alt={"Not found"}
         />
@@ -153,9 +170,9 @@ function App() {
         </WrapperImages> */}
         <Masonry
 
-          breakpointCols={5}
+          breakpointCols={screenSettings.columns}
           className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
+          columnClassName={`${screenSettings.paddingClass}`}
         // style={style}
         >
           {childElements}
