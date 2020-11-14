@@ -5,9 +5,9 @@ This project creating with React hooks, the image are requested from unsplash AP
 https://yellowclass-pinterest.netlify.app/
 
 ## Screenshots
-![Pinterest Home](./HomeScreen.png)
-![React Infinite Scroll](./InfiniteScroll.png)
-![Modal](./Modal.png)
+![Pinterest Home](./HomeScreen.png)<br />
+![React Infinite Scroll](./InfiniteScroll.png) <br />
+![Modal](./Modal.png)<br />
 
 ## Links
 react-infinite-scroll-component :  https://www.npmjs.com/package/react-infinite-scroll-component <br/>
