@@ -6,7 +6,9 @@ https://yellowclass-pinterest.netlify.app/
 
 ## Screenshots
 ![Pinterest Home](./HomeScreen.png)<br />
+
 ![React Infinite Scroll](./InfiniteScroll.png) <br />
+
 ![Modal](./Modal.png)<br />
 
 ## Links
