@@ -214,3 +214,6 @@ function App() {
 }
 
 export default App;
+
+
+//CI= npm run build on neltify build command
