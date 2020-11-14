@@ -66,13 +66,15 @@ function App() {
     const pad = window.innerWidth > 1000 ? 25 : 12.5
     const imgW = window.innerWidth > 1000 ? 230 : 130
     const maxCol = parseInt(window.innerWidth/imgW)
+
     console.log(maxCol)
 
     setScreenSettings({
       imageWidth : imgW,
       padding : pad,
       columns : parseInt((window.innerWidth-20  - ((maxCol+1)*pad))/imgW),
-      paddingClass : pad === 25 ? 'my-masonry-grid_column_large' : 'my-masonry-grid_column_small'
+      paddingClass : pad === 25 ? 'my-masonry-grid_column_large' : 'my-masonry-grid_column_small',
+      modalPercentage : window.innerHeight > window.innerWidth ? '70%' : '35%'
     })
   }, [window])
   // const [show, setShow] = useState([false])
@@ -204,7 +206,7 @@ function App() {
                 >
                   <img
                     src={currentImage.urls.full}
-                    style={{ width: '35%', padding: 20 }}
+                    style={{ width: screenSettings.modalPercentage, padding: 20 }}
                     // className={` ${transitionClass}`}
                     alt={"Not found"}
                   />
