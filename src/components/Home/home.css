@@ -1,0 +1,110 @@
+.blur-background {
+    filter: blur(8px);
+    -webkit-filter: blur(8px)
+  }
+ .infinite-scroll-component {
+    padding: 0px 30px 0px 30px
+  }
+  
+  .my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -15px; /* gutter size offset */
+    width: auto;
+  }
+  .my-masonry-grid_column_small {
+    padding-left: 12.5px; /* gutter size */
+    background-clip: padding-box;
+  }
+  
+  .my-masonry-grid_column_large {
+    padding-left: 25px; /* gutter size */
+    background-clip: padding-box;
+  }
+  
+  /* Style your items */
+  .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+    /* background: grey; */
+    margin-bottom: 30px;
+  }
+  
+  .halfsize {
+    -moz-transform:scale(0.5);
+    -webkit-transform:scale(0.5);
+    transform:scale(0.5);
+  }
+  
+  
+  #modalTransitionClass img {
+    /* position:absolute; */
+    left:0;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+    opacity:0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+  }
+  
+  #modalTransitionClass img.opaque {
+    opacity:1;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=1);
+  }
+  
+  .aToggleClass {
+    opacity: 1;
+  }
+  
+  .slide {
+    opacity: 0;
+  }
+  
+  .slide.enter-done {
+    /* opacity: 1;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=1); */
+    /* transform: translateZ(100%); */
+    
+    opacity: 1;
+  }
+  .slide.enter-active {
+    /* -webkit-transition: opacity 8s ease-in-out;
+    -moz-transition: opacity 8s ease-in-out;
+    -o-transition: opacity 8s ease-in-out;
+    transition: opacity 8s ease-in-out;
+    opacity:0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0); */
+    /* transform: translateZ(0%); */
+    /* transition: transform 1000ms ease-in-out; */
+    
+    opacity: 1;
+    transition: opacity 2s ease-in;
+  }
+  /* .slide.exit-done { */
+    
+    /* opacity: 1;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100); */
+    /* transform: translateZ(0%); */
+  
+    
+    /* opacity: 1; 
+  }
+  .slide.exit-active { */
+    /* -webkit-transition: opacity 2s ease-in-out;
+    -moz-transition: opacity 2s ease-in-out;
+    -o-transition: opacity 2s ease-in-out;
+    transition: opacity s ease-in-out;
+    opacity:0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0); */
+  
+    
+    /* opacity: 0.01;
+    transition: opacity 1s ease-in;
+  } */
+  

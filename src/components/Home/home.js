@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Heading } from './components/Header/Heading';
-import { Loader } from './components/Loader/Loader';
+import React, { useState, useEffect } from 'react';
+import { Heading } from '../Header/Heading';
+import { Loader } from '../Loader/Loader';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ReactDom from 'react-dom'
@@ -10,8 +10,8 @@ import { createGlobalStyle } from 'styled-components';
 
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-import './App.css'
-import './styles/test.css'
+import './home.css'
+import '../../styles/test.css'
 // import './styles/index.css'
 
 import Masonry from 'react-masonry-css';
@@ -51,7 +51,7 @@ const GlobalStyle = createGlobalStyle`
 //   grid-auto-rows: 300px;
 // `;
 
-const App = () => {
+const Home = () => {
   const [images, setImage] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
@@ -76,7 +76,7 @@ const App = () => {
       paddingClass : pad === 25 ? 'my-masonry-grid_column_large' : 'my-masonry-grid_column_small',
       modalPercentage : window.innerHeight > window.innerWidth ? '70%' : '35%'
     })
-  }, [window])
+  }, [setScreenSettings])
   // const [show, setShow] = useState([false])
   // console.log(screenSettings)
   useEffect(() => {
@@ -156,7 +156,7 @@ const App = () => {
   });
 
   return (
-    <div>
+    <div className={!showModal ? '' : 'blur-background'}>
       <Heading />
       <GlobalStyle />
       <InfiniteScroll
@@ -232,7 +232,4 @@ const App = () => {
   );
 }
 
-export default App;
-
-
-//CI= npm run build on neltify build command
+export default Home;
