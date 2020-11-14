@@ -219,7 +219,7 @@ const Home = () => {
             </div> */}
                 <div onClick={(e) => { rightButtonFunction(e) }}>
                   <span style={{ fontSize: 40 }}>
-                    <i class="fas fa-chevron-right" style={{ color: '#E60023' }}></i>
+                    <i className="fas fa-chevron-right" style={{ color: '#E60023' }}></i>
                   </span>
                 </div>
           </div>
