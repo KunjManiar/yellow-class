@@ -4,6 +4,11 @@ This project creating with React hooks, the image are requested from unsplash AP
 # For live preview visit
 https://yellowclass-pinterest.netlify.app/
 
+## Screenshots
+![Pinterest Home](./HomeScreen.png)
+![React Infinite Scroll](./InfiniteScrool.png)
+![Modal](./Modal.png)
+
 ## Links
 react-infinite-scroll-component :  https://www.npmjs.com/package/react-infinite-scroll-component <br/>
 react-masonry-css :  https://www.npmjs.com/package/react-masonry-css <br>
