@@ -58,7 +58,7 @@ function App() {
   const [currentImageNo, setCurrentImageNo] = useState(-1)
   const [onToggleClass, setOnToggleClass] = useState(null)
 
-  console.log(window.innerHeight + " " + window.innerWidth)
+  // console.log(window.innerHeight + " " + window.innerWidth)
   
   const [screenSettings, setScreenSettings] = useState({})
 
@@ -67,7 +67,7 @@ function App() {
     const imgW = window.innerWidth > 1000 ? 230 : 130
     const maxCol = parseInt(window.innerWidth/imgW)
 
-    console.log(maxCol)
+    // console.log(maxCol)
 
     setScreenSettings({
       imageWidth : imgW,
@@ -78,7 +78,7 @@ function App() {
     })
   }, [window])
   // const [show, setShow] = useState([false])
-  console.log(screenSettings)
+  // console.log(screenSettings)
   useEffect(() => {
     fetchImages();
   }, [])
@@ -145,7 +145,7 @@ function App() {
     return (
       <div key={i}>
         <img
-          style={{ borderRadius: 16 }}
+          style={{ borderRadius: 16, padding: 5 }}
           src={element.urls.regular}
           width={screenSettings.imageWidth}
           onClick={(e) => toggleModal(e, element, i)}
@@ -185,7 +185,7 @@ function App() {
         <div
           className="fixed p1 flex flex-column justify-center items-center trbl0 bg-fff-o overflow-auto overscroll-contain"
           onClick={e => {
-            console.log(e.currentTarget)
+            // console.log(e.currentTarget)
             toggleModal(e, null)
           }}
         >
