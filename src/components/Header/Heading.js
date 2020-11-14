@@ -2,12 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import './Header.css'
 
+import {submit} from '../Widgets/Alert/alert'
+
 const Header = styled.header`
   // max-width: 70rem;
   // margin: 2rem auto;
   text-align: center;
   margin: 10px
 `;
+
+
 
 // const H1 = styled.h1`
 //   font-family: 'Oswald', sans-serif;
@@ -45,10 +49,10 @@ export const Heading = () => {
     (
       <div className="flexRow" >
         <div className="buttonHeader" style={{}}>
-          <p className="buttonText" style={{ color: '#ffffff' }}>Login</p>
+          <button className="buttonText" style={{ color: '#ffffff', background: '#E60023', borderWidth: 0 }} onClick={submit}>Login</button>
         </div>
         <div className="buttonHeader" style={{ backgroundColor: '#efefef' }}>
-          <p className="buttonText" style={{}}>Sign Up</p>
+          <button className="buttonText" style=  {{ backgroundColor: '#efefef', borderWidth: 0, borderRadius: 'inherit' }} onClick={submit}>Sign Up</button>
         </div>
       </div>
     ) : null
