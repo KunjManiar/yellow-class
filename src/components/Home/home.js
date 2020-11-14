@@ -146,7 +146,7 @@ const Home = () => {
       <div key={i}>
         <img
           style={{ borderRadius: 16, padding: 5 }}
-          src={element.urls.regular}
+          src={element.urls.small}
           width={screenSettings.imageWidth}
           onClick={(e) => toggleModal(e, element, i)}
           alt={"Not found"}
@@ -205,7 +205,7 @@ const Home = () => {
                   key={currentImage.urls.regular}
                 >
                   <img
-                    src={currentImage.urls.full}
+                    src={currentImage.urls.regular}
                     style={{ width: screenSettings.modalPercentage, padding: 20 }}
                     // className={` ${transitionClass}`}
                     alt={"Not found"}
