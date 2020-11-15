@@ -51,9 +51,10 @@ const GlobalStyle = createGlobalStyle`
 //   grid-auto-rows: 300px;
 // `;
 
-const Home = () => {
+const Home = (props) => {
   const [images, setImage] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [blurBackground, setBlurBackground] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
   const [currentImageNo, setCurrentImageNo] = useState(-1)
   const [onToggleClass, setOnToggleClass] = useState(null)
@@ -83,7 +84,7 @@ const Home = () => {
     fetchImages();
   }, [])
 
-  const fetchImages = (count = 10) => {
+  const fetchImages = (count = 18) => {
     const apiRoot = "https://api.unsplash.com";
     const accessKey = process.env.REACT_APP_ACCESSKEY;
 
@@ -129,7 +130,7 @@ const Home = () => {
   const rightButtonFunction = (e) => {
 
     if (e && e.currentTarget.hasError) return
-    if (currentImageNo < images.length - 2) {
+    if (currentImageNo < images.length - 1) {
       // setTransitionClass(null)
       setOnToggleClass('slide');
       setCurrentImage(images[currentImageNo + 1]);
@@ -155,9 +156,13 @@ const Home = () => {
     );
   });
 
+  const onClickLoginOrSignup = () => {
+    setBlurBackground(!blurBackground)
+  }
+
   return (
-    <div className={!showModal ? '' : 'blur-background'}>
-      <Heading />
+    <div className={(showModal || blurBackground) ? 'blur-background' : ''}>
+      <Heading {...props} blurBackgroundFunction={onClickLoginOrSignup}/>
       <GlobalStyle />
       <InfiniteScroll
         dataLength={images.length}

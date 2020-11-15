@@ -20,6 +20,13 @@
       align-items: center;
   }
 
+  .flexColumn{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-between
+}
+
   .buttonHeader {
       margin-left: 10px;
       margin-right: 10px;
