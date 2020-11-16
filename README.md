@@ -1,5 +1,5 @@
 # React Infinite Scroll with lazy loading and masonry style
-This project creating with React hooks, the image are requested from unsplash API.
+This project works with the help of React hooks & images are requested from unsplash API.
 
 # For live preview visit
 https://yellowclass-pinterest.netlify.app/
