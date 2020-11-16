@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
   .sticky {
     position: fixed;
     top: 0;
+    width: 100%
   }
   
   .sticky + .content {
