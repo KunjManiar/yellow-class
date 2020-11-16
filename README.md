@@ -11,6 +11,10 @@ https://yellowclass-pinterest.netlify.app/
 
 ![Modal](./Modal.png)<br />
 
+![Sign In](./SignIn.png)<br />
+
+![Sign Up](./SignUp.png)<br />
+
 ## Links
 react-infinite-scroll-component :  https://www.npmjs.com/package/react-infinite-scroll-component <br/>
 react-masonry-css :  https://www.npmjs.com/package/react-masonry-css <br>
