@@ -1,5 +1,5 @@
 
-.labelError {
+.labelErrorlarge {
     color:#e60023;
     font-weight: 400;
     margin-top: 8px;
@@ -9,10 +9,39 @@
     text-align: left;
 }
 
-.input-data {
+.labelErrorsmall {
+    color:#e60023;
+    font-weight: 400;
+    margin-top: 8px;
+    padding:0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    text-align: left;
+    padding-bottom: 3px
+}
+
+.input-data-large {
     border-color: #ddd;
     min-height: 48px;
-    padding: 8px 16px;
+    padding: 12px 10px;
+    /* margin-bottom: 7px; */
+    border-radius: 16px;
+    appearance: none;
+    border-radius: 16px;
+    border-style: solid;
+    border-width: 2px;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    font-size: 17px;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 300;
+    /* text-align: center; */
+}
+
+.input-data-small {
+    border-color: #ddd;
+    min-height: 48px;
+    padding: 10px 10px;
     /* margin-bottom: 7px; */
     border-radius: 16px;
     appearance: none;
@@ -21,5 +50,8 @@
     border-width: 2px;
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,Helvetica,ヒラギノ角ゴ Pro W3,Hiragino Kaku Gothic Pro,メイリオ,Meiryo,ＭＳ Ｐゴシック,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
     font-size: 16px;
+    width: 100%;
+    margin-top: 9px;
+    font-weight: 300;
     /* text-align: center; */
 }

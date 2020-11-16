@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './signin.css';
 import { firebase } from '../../firebase';
 
@@ -7,7 +7,10 @@ import FormField from '../Widgets/FormFields/formFields';
 import { submit } from '../Widgets/Alert/alert'
 
 const SignIn = (props) => {
-    console.log("in signIn")
+
+
+
+    // console.log(window.innerWidth)
 
     const [registerError, setRegisterError] = useState('')
     const [loading, setLoading] = useState(false)
@@ -45,6 +48,14 @@ const SignIn = (props) => {
             validationMessage: ''
         }
     })
+
+    const [screenSettings, setScreenSettings] = useState({})
+
+    useEffect(() => {
+        setScreenSettings({
+            modalSize: window.innerWidth < 484 ? 'small' : 'large'
+        })
+    }, [setScreenSettings])
 
     const updateForm = (element) => {
         const newFormdata = {
@@ -176,26 +187,28 @@ const SignIn = (props) => {
     }
     // console.log(styles.logContainer)
     return (
-        <div className="logContainer pinterest-form" onClick={stopPropogationFunction}>
+        <div className={`logContainer pinterest-form-${screenSettings.modalSize}`} onClick={stopPropogationFunction}>
             <div className="pinterest-logo" >
                 <span style={{ fontSize: 36 }} >
                     <i className="fab fa-pinterest" style={{ color: '#E60023' }}></i>
                 </span>
             </div>
             <form onSubmit={(event) => submitForm(event, null)} >
-                <div className="pinterest-heading-container">
-                    <h3 style={{ fontFamily: 'Roboto', fontSize: 36 }}> Welcome to Pinterest </h3>
+                <div className={`pinterest-heading-container-${screenSettings.modalSize}`}>
+                    <h3 className={`pinterest-heading-${screenSettings.modalSize}`} style={{}}> Welcome to Pinterest </h3>
                 </div>
-                <div className="pinterest-form-details-container" >
+                <div className={`pinterest-form-details-container-${screenSettings.modalSize}`} >
                     <FormField
                         id={'email'}
                         formData={formData.email}
                         change={(element) => updateForm(element)}
+                        size={screenSettings.modalSize}
                     />
                     <FormField
                         id={'password'}
                         formData={formData.password}
                         change={(element) => updateForm(element)}
+                        size={screenSettings.modalSize}
                     />
                     <div className="forgot-password-container" onClick={submit}>
                         Forgot your password ?
@@ -210,16 +223,18 @@ const SignIn = (props) => {
                     </p>
                         <div className="other-logins">
                             <div className="facebook-login">
-                                <button className="facebook-button" >
-                                    <span style={{ fontSize: 22 }}><i style={{ color: '#ffffff', marginRight: 12, paddingLeft: 4 }} class="fab fa-facebook"></i></span>
+                                <button className={`facebook-button-${screenSettings.modalSize}`} >
+                                    <span className={`facebook-button-logo-${screenSettings.modalSize}`}>
+                                        <i className="fab fa-facebook" style={{ color: '#ffffff' }}></i>
+                                    </span>
                                 Continue with facebook
                                 </button>
                             </div>
 
 
                             <div className="google-login">
-                                <button className="google-button" >
-                                    <span style={{ fontSize: 22 }}><i style={{ marginRight: 18 }} class="fab fa-google"></i></span>
+                                <button className={`google-button-${screenSettings.modalSize}`} >
+                                    <span className={`google-button-logo-${screenSettings.modalSize}`}><i className="fab fa-google"></i></span>
                                 Continue with google
                                 </button>
                                 {/* <button className="">Continue with google</button> */}

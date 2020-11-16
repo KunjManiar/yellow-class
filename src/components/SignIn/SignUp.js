@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './signup.css';
 import './signin.css'
 import { firebase } from '../../firebase';
@@ -49,10 +49,11 @@ const SignIn = (props) => {
             value: '',
             config: {
                 name: 'age_input',
-                type: 'number',
+                type: 'text',
                 placeholder: 'Age'
             },
             validation: {
+                age: true,
                 required: true,
             },
             valid: false,
@@ -60,6 +61,14 @@ const SignIn = (props) => {
             validationMessage: ''
         },
     })
+
+    const [screenSettings, setScreenSettings] = useState({})
+
+    useEffect(() => {
+        setScreenSettings({
+            modalSize: window.innerWidth < 484 ? 'small' : 'large'
+        })
+    }, [setScreenSettings])
 
     const updateForm = (element) => {
         const newFormdata = {
@@ -96,6 +105,12 @@ const SignIn = (props) => {
         if (element.validation.password) {
             const valid = element.value.length >= 5;
             const message = `${!valid ? 'Must be greater than 5' : ''}`;
+            error = !valid ? [valid, message] : error
+        }
+
+        if (element.validation.age) {
+            const valid = /^\d+$/.test(element.value);
+            const message = `${!valid ? 'Must be a valid number' : ''}`;
             error = !valid ? [valid, message] : error
         }
 
@@ -191,34 +206,37 @@ const SignIn = (props) => {
     }
     // console.log(styles.logContainer)
     return (
-        <div className="logContainer pinterest-form-register" onClick={stopPropogationFunction}>
+        <div className={`logContainer pinterest-form-register-${screenSettings.modalSize}`} onClick={stopPropogationFunction}>
             <div className="pinterest-logo" >
                 <span style={{ fontSize: 36 }} >
                     <i className="fab fa-pinterest" style={{ color: '#E60023' }}></i>
                 </span>
             </div>
             <form onSubmit={(event) => submitForm(event, null)} >
-                <div className="pinterest-heading-container">
-                    <h3 style={{ fontFamily: 'Roboto', fontSize: 36 }}> Welcome to Pinterest </h3>
+                <div className={`pinterest-heading-container-${screenSettings.modalSize}`}>
+                    <h3 className={`pinterest-heading-${screenSettings.modalSize}`} > Welcome to Pinterest </h3>
                 </div>
                 <div className="heading-bottom-text-container">
                     <h3 className="heading-bottom-text">Find new ideas to try</h3>
                 </div>
-                <div className="pinterest-form-details-container" >
+                <div className={`pinterest-form-details-container-${screenSettings.modalSize}`} >
                     <FormField
                         id={'email'}
                         formData={formData.email}
                         change={(element) => updateForm(element)}
+                        size={screenSettings.modalSize}
                     />
                     <FormField
                         id={'password'}
                         formData={formData.password}
                         change={(element) => updateForm(element)}
+                        size={screenSettings.modalSize}
                     />
                     <FormField
                         id={'age'}
                         formData={formData.age}
                         change={(element) => updateForm(element)}
+                        size={screenSettings.modalSize}
                     />
 
                     {submitButton()}
@@ -230,16 +248,17 @@ const SignIn = (props) => {
                     </p>
                         <div className="other-logins">
                             <div className="facebook-login">
-                                <button className="facebook-button" >
-                                    <span style={{ fontSize: 22 }}><i style={{ color: '#ffffff', marginRight: 12, paddingLeft: 4 }} class="fab fa-facebook"></i></span>
-                                Continue with facebook
+                                <button className={`facebook-button-${screenSettings.modalSize}`} >
+                                    <span className={`facebook-button-logo-${screenSettings.modalSize}`}>
+                                        <i className="fab fa-facebook" style={{ color: '#ffffff' }}></i>
+                                    </span>Continue with facebook
                                 </button>
                             </div>
 
 
                             <div className="google-login">
-                                <button className="google-button" >
-                                    <span style={{ fontSize: 22 }}><i style={{ marginRight: 18 }} class="fab fa-google"></i></span>
+                                <button className={`google-button-${screenSettings.modalSize}`} >
+                                    <span className={`google-button-logo-${screenSettings.modalSize}`}><i className="fab fa-google"></i></span>
                                 Continue with google
                                 </button>
                                 {/* <button className="">Continue with google</button> */}

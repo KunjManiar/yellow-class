@@ -2,7 +2,7 @@ import React from 'react';
 import './formFields.css';
 
 
-const FormFields = ({formData,change,id}) =>{
+const FormFields = ({formData,change,id, size}) =>{
 
     const showError = () => {
         let errorMessage = null;
@@ -11,7 +11,7 @@ const FormFields = ({formData,change,id}) =>{
             if(formData.validationMessage==="" || formData.validationMessage===null)
                 return ''
             errorMessage = (
-                <div className="labelError">
+                <div className={`labelError${size}`}>
                     {formData.validationMessage}
                 </div>
             )
@@ -33,7 +33,7 @@ const FormFields = ({formData,change,id}) =>{
                             value={formData.value}
                             onBlur={(event) => change({event,id,blur:true})}
                             onChange={(event) => change({event,id,blur:false})}
-                            className="input-data"
+                            className={`input-data-${size}`}
                         />
                         { (showError() !== null && showError!=='') ? showError() : null }
                     </div>

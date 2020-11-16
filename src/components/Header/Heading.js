@@ -53,7 +53,7 @@ export const Heading = ({ props, blurBackgroundFunction }) => {
   const [showModalSignUp, setShowModalSignUp] = useState(false)
 
   const toggleModal = (e, type) => {
-    console.log(type)
+    // console.log(type)
     if (e && e.currentTarget.hasError) return
     type === 'signIn' ? setShowModalSignIn(!showModalSignIn) : setShowModalSignUp(!showModalSignUp)
     blurBackgroundFunction()
@@ -72,18 +72,21 @@ export const Heading = ({ props, blurBackgroundFunction }) => {
           <button className="buttonText" style={{ backgroundColor: '#efefef', borderWidth: 0, borderRadius: 'inherit' }} >Sign Up</button>
         </div>
       </div>
-    ) : null
+    ) : (
+      <div className="flexRow" >
+        <div className="buttonHeader" style={{}} onClick={(e) => toggleModal(e, 'signIn')}>
+          <button className="buttonText" style={{ color: '#ffffff', background: '#E60023', borderWidth: 0 }}>Login</button>
+        </div>
+        <div className="buttonHeader" style={{ backgroundColor: '#efefef' }} onClick={(e) => toggleModal(e, 'signUp')}>
+          <button className="buttonText" style={{ backgroundColor: '#efefef', borderWidth: 0, borderRadius: 'inherit' }} >Sign Up</button>
+        </div>
+      </div>
+    )
     
-    // (
-    //   <div className="flexRow" >
-    //     <div className="buttonHeader" style={{}} onClick={(e) => toggleModal(e, 'signIn')}>
-    //       <button className="buttonText" style={{ color: '#ffffff', background: '#E60023', borderWidth: 0 }}>Login</button>
-    //     </div>
-    //     <div className="buttonHeader" style={{ backgroundColor: '#efefef' }} onClick={(e) => toggleModal(e, 'signUp')}>
-    //       <button className="buttonText" style={{ backgroundColor: '#efefef', borderWidth: 0, borderRadius: 'inherit' }} >Sign Up</button>
-    //     </div>
-    //   </div>
-    // )
+    
+    // null
+    
+    
 
   const rowVsColumn = window.innerWidth > 450 ?
     (
@@ -97,31 +100,34 @@ export const Heading = ({ props, blurBackgroundFunction }) => {
         </div>
       </div>
     ) : (
-      <div className="flexRow" >
+      <div className="flexColumn" >
+        
+        <div className="flexRow">
         <span style={{ fontSize: 40 }}>
           <i className="fab fa-pinterest" style={{ color: '#E60023' }}></i>
         </span>
         <p style={{ color: '#E60023', marginLeft: 5, fontFamily: 'Oswald', letterSpacing: 0.8, fontSize: 25 }}>Pinterest</p>
-        <div style={{ paddingTop: 10, paddingLeft: 9 }}>
-          <p style={{ color: '#E60023', fontFamily: 'Oswald', letterSpacing: 0.4 }}> clone by Kunj Maniar</p>
+        </div>
+        <div style={{ paddingLeft: 46 }}>
+          <p style={{ color: '#E60023', fontFamily: 'Oswald', letterSpacing: 0.4, fontSize: 11.8 }}> clone by Kunj Maniar</p>
         </div>
       </div>
     )
     
+    
     // (
-    //   <div className="flexColumn" >
-        
-    //     <div className="flexRow">
+    //   <div className="flexRow" >
     //     <span style={{ fontSize: 40 }}>
     //       <i className="fab fa-pinterest" style={{ color: '#E60023' }}></i>
     //     </span>
     //     <p style={{ color: '#E60023', marginLeft: 5, fontFamily: 'Oswald', letterSpacing: 0.8, fontSize: 25 }}>Pinterest</p>
-    //     </div>
-    //     <div style={{ paddingLeft: 46 }}>
-    //       <p style={{ color: '#E60023', fontFamily: 'Oswald', letterSpacing: 0.4, fontSize: 11.8 }}> clone by Kunj Maniar</p>
+    //     <div style={{ paddingTop: 10, paddingLeft: 9 }}>
+    //       <p style={{ color: '#E60023', fontFamily: 'Oswald', letterSpacing: 0.4 }}> clone by Kunj Maniar</p>
     //     </div>
     //   </div>
     // )
+    
+    
 
   return (
     <Header>
