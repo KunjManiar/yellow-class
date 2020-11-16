@@ -5,7 +5,7 @@ import { firebase } from '../../firebase';
 
 import FormField from '../Widgets/FormFields/formFields';
 
-// import { submit } from '../Widgets/Alert/alert'
+import { submit } from '../Widgets/Alert/alert'
 
 const SignIn = (props) => {
 
@@ -248,7 +248,7 @@ const SignIn = (props) => {
                     </p>
                         <div className="other-logins">
                             <div className="facebook-login">
-                                <button className={`facebook-button-${screenSettings.modalSize}`} >
+                                <button className={`facebook-button-${screenSettings.modalSize}`} onClick={submit}>
                                     <span className={`facebook-button-logo-${screenSettings.modalSize}`}>
                                         <i className="fab fa-facebook" style={{ color: '#ffffff' }}></i>
                                     </span>Continue with facebook
@@ -257,7 +257,7 @@ const SignIn = (props) => {
 
 
                             <div className="google-login">
-                                <button className={`google-button-${screenSettings.modalSize}`} >
+                                <button className={`google-button-${screenSettings.modalSize}`} onClick={submit}>
                                     <span className={`google-button-logo-${screenSettings.modalSize}`}><i className="fab fa-google"></i></span>
                                 Continue with google
                                 </button>

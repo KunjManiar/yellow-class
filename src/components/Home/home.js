@@ -34,7 +34,6 @@ const GlobalStyle = createGlobalStyle`
   .sticky {
     position: fixed;
     top: 0;
-    width: 100%;
   }
   
   .sticky + .content {
@@ -42,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// width: 100%;
 // const WrapperImages = styled.section`
 //   max-width: 70rem;
 //   margin: 4rem auto;
